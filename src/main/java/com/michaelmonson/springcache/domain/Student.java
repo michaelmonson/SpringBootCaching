@@ -7,15 +7,15 @@ public class Student {
     private String name;
     private String address;
     private String phone;
-    private String clz;
+    private String active;
 
-    public Student(String id, String name, String address, String phone, String clz) {
+    public Student(String id, String name, String address, String phone, String active) {
         super();
         this.id = id;
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.clz = clz;
+        this.active = active;
     }
 
     //Setters and getters
@@ -48,11 +48,11 @@ public class Student {
         this.phone = phone;
     }    
  
-    public String getClz() {
-        return clz;
+    public String getActive() {
+        return active;
     }
-    public void setClz(String clz) {
-        this.clz = clz;
+    public void setActive(String active) {
+        this.active = active;
     }
    
 }
