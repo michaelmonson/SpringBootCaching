@@ -13,8 +13,8 @@ public class StudentService {
   @Cacheable("student")
   public Student getStudentByID(String id) {
     try {
-      System.out.println("Going to sleep for 5 Secs.. to simulate backend call.");
-      Thread.sleep(1000 * 5);
+      System.out.println("Going to sleep for 2 Secs.. to simulate backend call.");
+      Thread.sleep(1000 * 2);
 
     } catch (InterruptedException e) {
       e.printStackTrace();
@@ -23,14 +23,15 @@ public class StudentService {
     // Provides utility methods for generating fake strings, such as names, phone
     // numbers, addresses. Generate random strings with given patterns
     Faker faker = new Faker();
-    Address address = faker.address();
     String name = faker.name().fullName();
-    // String fakeAddress = address.toString();
+    Address address = faker.address();
     String fakeAddress = address.streetAddress() + ",  " + address.city() + ",  " + address.stateAbbr() + "  "
         + address.zipCode();
     String phone = faker.phoneNumber().phoneNumber();
+    String activeAddress =  Math.random() > 0.5 ? "Y" : "N";
 
-    return new Student(id, name, fakeAddress, phone, "Y");
+
+    return new Student(id, name, address.streetAddress(), address.city(), address.stateAbbr(), address.zipCode(),  phone, activeAddress);
   }
 
 }
