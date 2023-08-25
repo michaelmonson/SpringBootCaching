@@ -5,22 +5,31 @@ import com.github.javafaker.Faker;
 import com.github.javafaker.Name;
 import com.michaelmonson.springcache.domain.ContactInfo;
 import com.michaelmonson.springcache.domain.Student;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
 public class StudentService {
 
-  @Cacheable("student")
-  public Student getStudentByID(Long studentId) {
+	private final CacheService cacheService;
+
+	@Autowired
+		public StudentService(CacheService cacheService) {
+		this.cacheService = cacheService;
+	}
+
+	@Cacheable("student")
+	public Student getStudentByID(Long studentId) {
     try {
-      System.out.println("Going to sleep for 2 Secs.. to simulate backend call.");
-      Thread.sleep(1000 * 2);
+    	System.out.println("Going to sleep for 2 Secs.. to simulate backend call.");
+      	Thread.sleep(1000 * 2);
 
     } catch (InterruptedException e) {
-      e.printStackTrace();
+		e.printStackTrace();
     }
 
     // Provides utility methods for generating fake strings, such as names and numbers
@@ -35,7 +44,15 @@ public class StudentService {
             faker.phoneNumber().phoneNumber(), faker.internet().emailAddress());
 
     return new Student(studentId, studentName.fullName(), studentName.lastName(), studentName.firstName(), middleName,
-            studentName.title(), activeStudent, contactInfo);
-  }
+		studentName.title(), activeStudent, contactInfo);
+	}
+
+
+	public List<Student> getStudents() {
+
+    	List<Object> cacheObjects = cacheService.getAllEntriesFromStudentCache("student");
+
+		return cacheObjects.stream().map( object -> (Student)object ).toList();
+  	}
 
 }
