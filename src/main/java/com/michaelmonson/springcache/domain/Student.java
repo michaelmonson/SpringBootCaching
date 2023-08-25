@@ -3,78 +3,76 @@ package com.michaelmonson.springcache.domain;
 
 public class Student {
     
-    private String id;
-    private String name;
-    private String address;
-    private String city;
-    private String stateCode;
-    private String zipCode;
-    private String phone;
+    private Long studentId;
+    private String fullName;
+    private String nameLast;
+    private String nameFirst;
+    private String nameMiddle;
+    private String honorific;
     private String active;
 
-    public Student(String id, String name, String address, String city, String stateCode, String zipCode, String phone, String active) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.city = city;
-        this.stateCode = stateCode;
-        this.zipCode = zipCode;
-        this.phone = phone;
+    private ContactInfo contactInfo;
+
+
+    //Full Constructor:
+    public Student(Long studentId, String fullName, String nameLast, String nameFirst, String nameMiddle,
+                   String honorific, String active, ContactInfo contactInfo) {
+        this.studentId = studentId;
+        this.fullName = fullName;
+        this.nameLast = nameLast;
+        this.nameFirst = nameFirst;
+        this.nameMiddle = nameMiddle;
+        this.honorific = honorific;
         this.active = active;
+
+        this.contactInfo = contactInfo;
+
     }
 
-    //Setters and getters  (TODO: Consider switching to lombok library for automatic generation of property methods)
+//Setters and getters  (TODO: Consider switching to lombok library for automatic generation of property methods)
 
-    public String getId() {
-        return id;
+    public Long getStudentId() {
+        return studentId;
     }
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
-    public String getAddress() {
-        return address;
+    public String getFullName() {
+        return fullName;
     }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-    public void setCity(String city) {
-        this.city = city;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getStateCode() {
-        return stateCode;
+    public String getNameLast() {
+        return nameLast;
     }
-    public void setStateCode(String stateCode) {
-        this.stateCode = stateCode;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public void setNameLast(String nameLast) {
+        this.nameLast = nameLast;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getNameFirst() {
+        return nameFirst;
     }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }    
- 
+    public void setNameFirst(String nameFirst) {
+        this.nameFirst = nameFirst;
+    }
+
+    public String getNameMiddle() {
+        return nameMiddle;
+    }
+    public void setNameMiddle(String nameMiddle) {
+        this.nameMiddle = nameMiddle;
+    }
+
+    public String getHonorific() {
+        return honorific;
+    }
+    public void setHonorific(String honorific) {
+        this.honorific = honorific;
+    }
+
     public String getActive() {
         return active;
     }
@@ -82,6 +80,11 @@ public class Student {
         this.active = active;
     }
 
-
-   
+    //Contact Information for the student:
+    public ContactInfo getContactInfo() {
+        return contactInfo;
+    }
+    public void setContactInfo(ContactInfo contactInfo) {
+        this.contactInfo = contactInfo;
+    }
 }

@@ -17,7 +17,7 @@ public class StudentController {
     StudentService studentService;
 
     @GetMapping("/student/{id}")
-    public Student findStudentById(@PathVariable String id) {
+    public Student findStudentById(@PathVariable Long id) {
         System.out.println("Searching by ID  : " + id);
 
         return studentService.getStudentByID(id);
