@@ -1,6 +1,7 @@
 
 package com.michaelmonson.springcache.controller;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import com.michaelmonson.springcache.service.StudentService;
 import java.util.List;
 
 @RestController
+@Api(tags = "Student Controller")
 public class StudentController {
 
     @Autowired

@@ -36,7 +36,6 @@ public class CacheService {
 			if (nativeCache instanceof ConcurrentHashMap<?, ?> concurrentHashMap) {
 				entries.addAll(concurrentHashMap.values());
 			}
-
 				/* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
 				 * Unfortunately, the Cache interface itself does not have a forEach method.
 				 * To retrieve ALL entries from the cache, I need to use the Cache interface's getNativeCache() method
