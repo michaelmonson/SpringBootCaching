@@ -1,8 +1,8 @@
 
 package com.michaelmonson.springcache.controller;
 
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +13,7 @@ import com.michaelmonson.springcache.service.StudentService;
 import java.util.List;
 
 @RestController
-@Api(tags = "Student Controller")
+//@Api(tags = "Student Controller")
 public class StudentController {
 
     @Autowired
@@ -32,6 +32,11 @@ public class StudentController {
         return studentService.getStudentByID(id);
     }
 
+    @DeleteMapping("/student/{id}")
+    public void deleteStudent(@PathVariable Long id) {
+        System.out.println("Deleting Student Entity for ID: " + id);
+        studentService.deleteStudent(id);
+    }
 
     /**
      *  Requests a list of all students currently in cache.
